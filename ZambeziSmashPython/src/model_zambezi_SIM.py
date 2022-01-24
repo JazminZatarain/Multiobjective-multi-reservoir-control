@@ -8,7 +8,7 @@
 # Importing model classes:
 from catchment import catchment, catchment_param
 from lake import reservoir_param, lake
-from utils import myFile, utils
+from utils import utils
 from smash import Policy
 
 import numpy as np
@@ -198,11 +198,11 @@ class model_zambezi:
         # places in the simulate function) which are the "release" and
         # "irrigation" policies. While the former is meant to be a generic
         # approximator such as RBF and ANN (to be optimized) the latter
-        # the latter has a simple structure specified in the
+        # has a simple structure specified in the
         # alternative_policy_structures script. Firstly, a Policy object is
         # instantiated which is meant to own all policy functions within a
         # model (see the documentation of SMASH). Then, two separate policies
-        # are added on to the overarching_policy.
+        # are added onto the overarching_policy.
        
         self.overarching_policy = Policy()
 
@@ -312,7 +312,7 @@ class model_zambezi:
     def simulate(self):
         """ Mathematical simulation over the specified simulation
         duration within a main for loop based on the mass-balance
-        equation (Remember the mode of simulation!)
+        equation
 
         Parameters
         ----------
@@ -341,6 +341,8 @@ class model_zambezi:
         s_ka = np.full(self.H + 1, -999) 
         s_cb = np.full(self.H + 1, -999)
         s_kgl = np.full(self.H + 1, -999)
+        #s_kgu, s_itt, s_ka, s_cb, s_kgl = tuple(5 * [np.full(self.H+1, -999)])
+        # print(s_kgu)
         h_kgu = np.full(self.H + 1, -999)
         h_itt = np.full(self.H + 1, -999)
         h_ka = np.full(self.H + 1, -999)
@@ -369,7 +371,7 @@ class model_zambezi:
         r_irr8 = np.full(self.H + 1, -999)
         r_irr9 = np.full(self.H + 1, -999)
 
-        # simulation variables Python -. (initialized as float of value 0 and empty np array)
+        # simulation variables Python -. (initialized as float of value 0 and empty np array) 
         q_Itt, q_KafueFlats, q_KaLat, q_Bg, q_Cb, q_Cuando, q_Shire,\
         qTurb_Temp, qTurb_Temp_N, qTurb_Temp_S, headTemp,\
         hydTemp, hydTemp_dist, hydTemp_N, hydTemp_S, irrDef_Temp, irrDefNorm_Temp,\
@@ -649,10 +651,10 @@ class model_zambezi:
                 obj_copy = getattr(obj_copy, item)
             return obj_copy
 
-        input_model = pd.read_excel("../data/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
+        input_model = pd.read_excel("../settings/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
          sheet_name="ModelParameters", skiprows=3)
 
-        input_policy = pd.read_excel("../data/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
+        input_policy = pd.read_excel("../settings/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
          sheet_name="PolicyParameters", skiprows=3)
 
         input_df = pd.concat([input_model, input_policy], ignore_index=True)

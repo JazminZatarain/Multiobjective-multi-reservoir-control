@@ -8,7 +8,7 @@
 # Importing model classes:
 from catchment import catchment, catchment_param
 from lake import reservoir_param, lake
-from utils import myFile, utils
+from utils import utils
 from smash import Policy
 
 import numpy as np
@@ -306,7 +306,7 @@ class model_zambezi:
     def simulate(self):
         """ Mathematical simulation over the specified simulation
         duration within a main for loop based on the mass-balance
-        equation (Remember the mode of simulation!)
+        equation
 
         Parameters
         ----------
@@ -606,10 +606,10 @@ class model_zambezi:
                 obj_copy = getattr(obj_copy, item)
             return obj_copy
 
-        input_model = pd.read_excel("../data/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
+        input_model = pd.read_excel("../settings/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
          sheet_name="ModelParameters", skiprows=3)
 
-        input_policy = pd.read_excel("../data/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
+        input_policy = pd.read_excel("../settings/excel_settings.xlsx", usecols=["AttributeName", "Value", "Type"],
          sheet_name="PolicyParameters", skiprows=3)
 
         input_df = pd.concat([input_model, input_policy], ignore_index=True)
