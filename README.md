@@ -2,7 +2,7 @@
 
 ## Case of Zambezi River Basin
 
-This repository concerns the implementation of the evolutionary multi-objective direct policy search (EMODPS) framework on the hydrologic system of Zambezi River Basin. The model code was originally written in C++ by Jazmin Zatarain Salazar and ... within the scope of the [DAFNE project](https://cordis.europa.eu/project/id/690268). Adaptation of the source code to Python was done by Yasin Sari during his internship at the TPM AI Lab between August - December 2021.
+This repository concerns the implementation of the evolutionary multi-objective direct policy search (EMODPS) framework on the hydrologic system of Zambezi River Basin. The model code was originally written in C++ within the scope of the [DAFNE project](https://cordis.europa.eu/project/id/690268). Adaptation of the source code to Python was done by Yasin Sari during his internship at the TPM AI Lab between August - December 2021.
 
 The model includes 5 currently existent reservoirs in the Zambezi River Basin-- namely Itezhi-Itezhi, Kafue Gorge Upper, Kafue Gorge Lower, Kariba and Cahora Bassa (see Figure 1). Releases from these reservoirs are aimed to be optimised with respect to three objectives which are irrigation demand deficit, hydropower production and environmental flow deficit.
 
